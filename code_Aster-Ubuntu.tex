@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, latexsym, amssymb, graphicx, bold-extra, mathrsfs, frcursive}
+
+\usepackage[pdftex]{color}
+\usepackage[T1]{fontenc}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{bm}
+
+% VN
+\usepackage[french]{babel}
+
+%Insert image
+\usepackage{graphicx}
+
+% Simplifies margin settings
+\usepackage{geometry}
+\geometry{margin=20mm}
+
+% Table
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\title{Code\_Aster Ubuntu}
+\date{Ngày 4 tháng 3 năm 2020}
+
+\begin{document}
+	\maketitle
+
+	gmsh : maillage visualisation
+	sudo apt-get install gmsh
+	
+	cd /home/t-s/salome\_meca/V2019.0.3\_universal/
+	
+	. salome\_prerequisites\_root.sh 
+	. salome\_prerequisites.sh 
+	as\_run 
+	
+	vim .bashrc
+	(modification par \textbf{allias} source\_aster = ‘. / path1 \& . / path2’ : ajout de l’environnement des variables)
+	
+	bash
+	
+	Pour exécuter code aster :
+	
+	source\_aster : fait connaître la variable code\_aster à l’ordinateur
+	puis :
+	as\_run path (file.export) \\
+	
+	\noindent\rule{18.5cm}{0.4pt}
+	\linebreak
+	
+	Dans réalité : les ponts routiers se composent de 3 à 4 travées, cela est équivalent à une poutre à 3-4 travées (4 maximum)
+	
+	Voir fréquence propre : dans fichier « .mess », cherche « calcul modal »
+	\linebreak
+	
+	Dans le modèle analytique, on calcule $\lambda$.
+	
+	On a:
+	$$\lambda^4 = \frac{\rho A}{EI} \omega^2$$
+	$$\Rightarrow \omega = \sqrt{\frac{EI}{\rho A}} \lambda ^2 = 2 \pi f $$
+	$$\Rightarrow f = \frac{1}{2 \pi}.\sqrt{\frac{EI}{\rho A}} \lambda ^2 $$
+	
+	\noindent\rule{18.5cm}{0.4pt}
+	\linebreak
+	
+	Dans le script code\_Aster de Véronique, elle met des inerties quadratiques $I_y$ et $I_z$ d'une poutre en section $I$. Dans le repère global, l'axe $s$ se situe le long de la poutre, l'axe $z$ est vertical, tend vers le haut. L'axe $y$ est dans la direction perpendiculaire de la poutre.
+	
+	Étant donné les deux inerties $I_y$ et $I_z$, $I_z < I_y$ (environ 10 fois plus faible), le logiciel cherche les fréquence propre dans les 2 sens (dans le plan$(0xz)$ et hors plan).
+	
+	Les résultat obtenue par la projection sur la base de déformés modales. Par orthogonalité, les modes hors plan seront annulé (on ne garde que les modes de vibration dans le plan $(Oxz)$).
+	
+	
+\end{document}

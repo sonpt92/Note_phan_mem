@@ -64,11 +64,21 @@
 	\noindent\rule{18.5cm}{0.4pt}
 	\linebreak
 	
-	Dans le script code\_Aster de Véronique, elle met des inerties quadratiques $I_y$ et $I_z$ d'une poutre en section $I$. Dans le repère global, l'axe $s$ se situe le long de la poutre, l'axe $z$ est vertical, tend vers le haut. L'axe $y$ est dans la direction perpendiculaire de la poutre.
+	Dans le script code\_Aster de Mme. Covrec, elle met des inerties quadratiques $I_y$ et $I_z$ d'une poutre en section $I$. Dans le repère global, l'axe $s$ se situe le long de la poutre, l'axe $z$ est vertical, tend vers le haut. L'axe $y$ est dans la direction perpendiculaire de la poutre.
 	
-	Étant donné les deux inerties $I_y$ et $I_z$, $I_z < I_y$ (environ 10 fois plus faible), le logiciel cherche les fréquence propre dans les 2 sens (dans le plan$(0xz)$ et hors plan).
+	Étant donné les deux inerties $I_y$ et $I_z$, $I_y < I_z$ (environ 12 fois plus faible: $I_y = 0.002746$ et $I_z = 0.032443$, soit $I_z = 11.8 I_y$), le logiciel cherche les fréquence propre dans les 2 sens (dans le plan$(0xz)$ et hors plan).
 	
-	Les résultat obtenue par la projection sur la base de déformés modales. Par orthogonalité, les modes hors plan seront annulé (on ne garde que les modes de vibration dans le plan $(Oxz)$).
+	L'expression de $I_y$ et $I_z$ (source code de V. Covrec):
+	$$I_y = \frac{eb^3}{6} + \frac{(h-e)f^3}{12} $$
+	$$I_z = \frac{be^3}{6} + \frac{(h-e)^2be}{2} +\frac{f(h-2e)^3}{12}$$
+	
+	Section:
+	$$A = (h-2e)f + 2eb$$
+	
+	Avec:
+	$b$ la largeur, $h$ le hauteur, $e$ l'épaisseur des semelles, $f$ l'épaisseur de l'âme.
+	
+	Les résultat obtenue par la projection sur la base de déformés modales. Par orthogonalité, les modes hors plan seront annulés (on ne garde que les modes de vibration dans le plan $(Oxz)$).
 	
 	
 \end{document}

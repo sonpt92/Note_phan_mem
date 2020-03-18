@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, latexsym, amssymb, graphicx, bold-extra, mathrsfs, frcursive}
+
+\usepackage[pdftex]{color}
+\usepackage[T1]{fontenc}
+\usepackage[light, largesmallcaps]{kpfonts}
+\usepackage{bm}
+
+% VN
+\usepackage[vietnamese]{babel}
+
+%Insert image
+\usepackage{graphicx}
+
+% Hyperlink
+\usepackage{hyperref}
+
+% Simplifies margin settings
+\usepackage{geometry}
+\geometry{margin=20mm}
+
+% Table
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\title{Đưa phương trình về giữa trong bài báo 2 cột \\
+	Restore Centering for Equations in Custom Class}
+\date{Ngày 4 tháng 3 năm 2020}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Problème}
+	Phương trình không thể căn giữa bằng "centering" hoặc "begin\{center\}".
+	
+	Lý do: do dùng custum class (tự viết)
+	
+	\section{Solution}
+	Bỏ dòng -RequirePackage[tbtags,fleqn]\{amsmath\} đi. Vì package fleq làm ctrinh ko centering eqn được.
+	
+	\section{Tham khảo}
+	
+	by jhargis » Wed Feb 26, 2014 1:18 am
+	
+	Actually, I also just found the solution (well, sort of). I went into the svjour3 cls file and found where the equations in two column mode are default set "fleqn" (line 42 of the code I believe). Just delete the "fleqn" inside the curly brackets , {}, and you'll get centered equations. Again, this is in the svjour3 style file itself that this must be done.
+	
+	Good luck...
+	
+	\url{https://latex.org/forum/viewtopic.php?t=22656}
+	
+\end{document}
